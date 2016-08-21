@@ -3,6 +3,7 @@
 <head>
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" href="app.css"></link>
 <title>Portfolio</title>
 </head>
 <body>
@@ -16,6 +17,15 @@
 <form name="inputForm" action="#" onSubmit="app.handleInput();return false">
 <input id="input" type="text"></input>
 </form>
+
+<div id="lightbox-dimmer"></div>
+<div id="lightbox">
+	<div id="lightbox-closebutton" onClick="app.hideLightbox();return false">close</div>
+	<div id="lightbox-content">
+		<p>I'm a modal window!</p>
+		<p>I can grow dynamically based on my content!</p>
+	</div>
+</div>
 
 </body>
 </html>

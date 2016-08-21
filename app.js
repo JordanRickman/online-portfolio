@@ -42,6 +42,16 @@ app.outputLines = function(lines) {
 	output_lines.exit().remove();
 };
 
+//TODO Use d3 transitions to fade in/out
+app.showLightbox = function() {
+	d3.select("#lightbox-dimmer").style("display", "block");
+	d3.select("#lightbox").style("display", "block");
+}
+app.hideLightbox = function() {
+	d3.select("#lightbox-dimmer").style("display", "none");
+	d3.select("#lightbox").style("display", "none");
+}
+
 //===== COMMANDS =====
 app.commands = {};
 
@@ -164,6 +174,10 @@ app.commands.pwd.manual = [
 	"----------",
 	"Displays the path of the current working directory."
 ];
+
+app.commands.view = function() {
+
+};
 
 //===== Data =====
 app.root = [
