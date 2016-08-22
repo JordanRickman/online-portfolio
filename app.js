@@ -175,8 +175,37 @@ app.commands.pwd.manual = [
 	"Displays the path of the current working directory."
 ];
 
-app.commands.view = function() {
-
+app.commands.view = function(item_name) {
+	if ( item_name == "" ) {
+		app.outputLines(["No item to view specified."]);
+	} else {
+		var i = 0;
+		for ( ; i < app.cwd.length; i++ ) {
+			if ( app.cwd[i].name == item_name ) {
+				var item  = app.cwd[i];
+				if ( item.viewHTML ) {
+					d3.select("#lightbox-content").html(item.viewHTML);
+					app.showLightbox();
+				} else if ( item.viewURL ) {
+					if ( item.viewType == "doc" ) {
+						// TODO Display Word Document
+					} else if ( item.viewType == "pdf" ) {
+						// TODO Display PDF
+					} else {
+						app.outputLines([escapeHtml(item_name)+" is not viewable."]);
+					}
+				} else if ( Array.isArray(item.children) ) {
+					app.outputLines([escapeHtml(item_name)+" is a directory. Try the 'ls' and 'cd' commands."]);
+				} else {
+					app.outputLines([escapeHtml(item_name)+" is not viewable."]);
+				}
+				break;
+			}
+		}
+		if ( i == app.cwd.length ) {
+			app.outputLines([escapeHtml(item_name)+" not found."])
+		}
+	}
 };
 
 //===== Data =====
@@ -200,6 +229,10 @@ app.root = [
 				name: "Python"
 			}
 		]
+	},
+	{
+		name: "Summary",
+		viewHTML: "Here is some view content. <em>HTML works!</em>"
 	}
 ];
 
@@ -207,3 +240,9 @@ app.cwd = app.root;
 app.cwd_path = [];
 
 //===== Initialize DOM =====
+document.onkeydown = function(evt) {
+	evt = evt || window.event;
+	if (evt.keyCode == 27) { // ESC key
+		app.hideLightbox();
+	}
+};
