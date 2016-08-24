@@ -1,4 +1,5 @@
 var app = {};
+app.BASE_URL = "http://localhost:8000/" // TODO Modify in production
 
 //===== Helper Functions =====
 function escapeHtml(str) {
@@ -192,7 +193,16 @@ app.commands.view = function(item_name) {
 					app.showLightbox();
 				} else if ( item.viewURL ) {
 					if ( item.viewType == "doc" ) {
-						// TODO Display Word Document
+						d3.select("#lightbox")
+							.classed("document-view", true);
+						d3.select("#lightbox-content")
+							.html("<iframe src=\"https://docs.google.com/gview?url="
+								//+app.BASE_URL+item.viewURL
+								// TODO Below is a public domain document for demo purposes
+								// we cannot use the real document until we have a publicly accessible URL
+								+"http://ieee802.org/secmail/docIZSEwEqHFr.doc"
+								+"&embedded=true\" frameborder=\"0\"></iframe>");
+						app.showLightbox();
 					} else if ( item.viewType == "pdf" ) {
 						d3.select("#lightbox")
 							.classed("document-view", true);
@@ -230,7 +240,9 @@ app.root = [
 		viewURL: "files/Resume.pdf"
 	},
 	{
-		name: "Resume.docx"
+		name: "Resume.docx",
+		viewType: "doc",
+		viewURL: "files/Resume.docx"
 	},
 	{
 		name: "Portrait.jpg"
