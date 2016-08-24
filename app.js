@@ -228,7 +228,7 @@ app.commands.view = function(item_name) {
 			}
 		}
 		if ( i == app.cwd.length ) {
-			app.outputLines([escapeHtml(item_name)+" not found."])
+			app.outputLines([escapeHtml(item_name)+" not found."]);
 		}
 	}
 };
@@ -238,22 +238,50 @@ app.commands.view.manual = [
 	"View the content of the item."
 ];
 
+app.commands.download = function(item_name) {
+	if ( item_name == "" ) {
+		app.outputLines(["No item to download specified."]);
+	} else {
+		var i = 0;
+		for ( ; i < app.cwd.length; i++ ) {
+			if ( app.cwd[i].name == item_name && app.cwd[i].downloadURL ) {
+				downloadFile(app.BASE_URL + app.cwd[i].downloadURL);
+				break;
+			} else if ( app.cwd[i].name == item_name ) {
+				app.outputLines([escapeHtml(item_name)+" is not downloadable."]);
+				break;
+			}
+		}
+		if ( i == app.cwd.length ) {
+			app.outputLines([escapeHtml(item_name)+" not found."]);
+		}
+	}
+};
+app.commands.download.manual = [
+	"Usage: download <em>item</em>",
+	"----------",
+	"Download the given item."
+];
+
 //===== Data =====
 app.root = [
 	{
 		name: "Resume.pdf",
 		viewType: "pdf",
-		viewURL: "files/Resume.pdf"
+		viewURL: "files/Resume.pdf",
+		downloadURL: "files/Resume.pdf"
 	},
 	{
 		name: "Resume.docx",
 		viewType: "doc",
-		viewURL: "files/Resume.docx"
+		viewURL: "files/Resume.docx",
+		downloadURL: "files/Resume.docx"
 	},
 	{
 		name: "Portrait.jpg",
 		viewType: "img",
-		viewURL: "files/Portrait.jpg"
+		viewURL: "files/Portrait.jpg",
+		downloadURL: "files/Portrait.jpg"
 	},
 	{
 		name: "Skills",
