@@ -17,6 +17,7 @@
 	z-index: 11;
 	max-height: calc(100% - 50px);
 	max-width: calc(100% - 50px);
+	overflow: hidden;
 
 	background-color: blue;
 }
@@ -31,6 +32,9 @@
 }
 #lightbox-content {
 	margin: 20px;
+	max-height: calc(100% - 40px);
+	max-width: calc(100% - 40px);
+	overflow: hidden;
 
 	background-color: green;
 }

@@ -207,8 +207,14 @@ app.commands.view = function(item_name) {
 						d3.select("#lightbox")
 							.classed("document-view", true);
 						d3.select("#lightbox-content")
-							.html("<iframe src = \"/ViewerJS/#../"+item.viewURL+
+							.html("<iframe src=\"/ViewerJS/#../"+item.viewURL+
 							"\" allowfullscreen webkitallowfullscreen></iframe>");
+						app.showLightbox();
+					} else if ( item.viewType = "img" ) {
+						d3.select("#lightbox")
+							.classed("document-view", false);
+						d3.select("#lightbox-content")
+							.html("<img src=\""+item.viewURL+"\"></img>");
 						app.showLightbox();
 					} else {
 						app.outputLines([escapeHtml(item_name)+" is not viewable."]);
@@ -245,7 +251,9 @@ app.root = [
 		viewURL: "files/Resume.docx"
 	},
 	{
-		name: "Portrait.jpg"
+		name: "Portrait.jpg",
+		viewType: "img",
+		viewURL: "files/Portrait.jpg"
 	},
 	{
 		name: "Skills",
