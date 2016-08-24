@@ -304,12 +304,18 @@ app.root = [
 app.cwd = app.root;
 app.cwd_path = [];
 
-//===== Initialize DOM =====
-document.onkeydown = function(evt) {
-	evt = evt || window.event;
-	if (evt.keyCode == 27) { // ESC key
-		app.hideLightbox();
-	}
-};
+//===== Initialize - called on page load =====
+app.init = function() {
+	document.onkeydown = function(evt) {
+		evt = evt || window.event;
+		if (evt.keyCode == 27) { // ESC key
+			app.hideLightbox();
+		}
+	};
+
+	// Focus the command input
+	document.getElementById('input').focus();
+}
+
 
 // TODO URL Breadcrumbs
