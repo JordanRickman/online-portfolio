@@ -63,7 +63,8 @@ app.commands.help = function(command) {
 				cmd_list.push(key);
 			}
 		}
-		app.outputLines(cmd_list);
+		app.outputLines(["Type 'help <em>cmd</em>' for more information on a specific command. Available commands:"]
+			.concat(cmd_list));
 	} else if ( typeof app.commands[command] == "function" ) {
 		app.outputLines(app.commands[command].manual);
 	} else {
@@ -184,13 +185,21 @@ app.commands.view = function(item_name) {
 			if ( app.cwd[i].name == item_name ) {
 				var item  = app.cwd[i];
 				if ( item.viewHTML ) {
-					d3.select("#lightbox-content").html(item.viewHTML);
+					d3.select("#lightbox")
+						.classed("document-view", false);
+					d3.select("#lightbox-content")
+						.html(item.viewHTML);
 					app.showLightbox();
 				} else if ( item.viewURL ) {
 					if ( item.viewType == "doc" ) {
 						// TODO Display Word Document
 					} else if ( item.viewType == "pdf" ) {
-						// TODO Display PDF
+						d3.select("#lightbox")
+							.classed("document-view", true);
+						d3.select("#lightbox-content")
+							.html("<iframe src = \"/ViewerJS/#../"+item.viewURL+
+							"\" allowfullscreen webkitallowfullscreen></iframe>");
+						app.showLightbox();
 					} else {
 						app.outputLines([escapeHtml(item_name)+" is not viewable."]);
 					}
@@ -207,11 +216,18 @@ app.commands.view = function(item_name) {
 		}
 	}
 };
+app.commands.view.manual = [
+	"Usage: view <em>item</em>",
+	"----------",
+	"View the content of the item."
+];
 
 //===== Data =====
 app.root = [
 	{
-		name: "Resume.pdf"
+		name: "Resume.pdf",
+		viewType: "pdf",
+		viewURL: "files/Resume.pdf"
 	},
 	{
 		name: "Resume.docx"
@@ -246,3 +262,5 @@ document.onkeydown = function(evt) {
 		app.hideLightbox();
 	}
 };
+
+// TODO URL Breadcrumbs

@@ -34,3 +34,18 @@
 
 	background-color: green;
 }
+
+/* Layout handling for documents - grow to screen, not content size */
+.document-view {
+	min-height: calc(100% - 50px);
+	min-width: calc(100% - 50px);
+}
+.document-view #lightbox-content {
+	position: absolute;
+	height: calc(100% - 40px);
+	width: calc(100% - 40px);
+}
+.document-view iframe {
+	height: 100%;
+	width: 100%;
+}
