@@ -1,16 +1,19 @@
-/* ----- Main Page Styling ----- */
+/* ----- Main Page Layout ----- */
 #page-wrapper {
+	width: 600px;
+
+	/* Center horizontally, and vertically center the bottom of #title-wrapper */
 	position: fixed;
 	top: calc(50% - 120px);
 	left: 50%;
 	transform: translateX(-50%);
-	width: 600px;
+
 	/* Don't let the bottom reach below 20px from the bottom of the viewport */
-	max-height: calc(50% + 120px - 20px);
+	max-height: calc(50% + 120px - 20px); /* 50% of viewport + 120px #title-wrapper - 20px at bottom */
+
+	/* Flexbox is the only way to get the console to play nice with max heights */
 	display: flex;
 	flex-direction: column;
-
-	background-color: #D0D0D0;
 }
 #title-wrapper {
 	height: 120px;
@@ -23,24 +26,30 @@
 	-webkit-margin-before: 0;
 	-webkit-margin-after: 0;
 	padding: 0;
+	font-size: 3em;
+
+	/* Center text vertically & horizontally */
 	line-height: 80px;
 	text-align: center;
-	font-size: 3em;
 }
 #subtitle {
 	height: 40px;
-	line-height: 40px;
+	padding: 0;
 	margin: 0;
 	-webkit-margin-before: 0;
 	-webkit-margin-after: 0;
-	text-align: center;
 	font-size: 1.5em;
+
+	/* Center text vertically & horizontally */
+	line-height: 40px;
+	text-align: center;
 }
 #console-wrapper {
-	position: relative;
-	max-height: calc(50% - 20px - 20px);
+	max-height: calc(50% - 20px - 20px); /* 50% of viewport - 20px padding - 20px at bottom */
 	margin: 0;
 	padding: 10px;
+
+	/* Flexbox is the only way to get the output lines to play nice with max heights */
 	display: flex;
 	flex-direction: column;
 }
@@ -49,77 +58,101 @@
 	padding: 0;
 	overflow-y: auto; /* Scrollbar only when needed */
 	/* TODO: Custom (JS) scrollbar to fit look/feel */
-
-	background-color: blue;
-	list-style-type: none;
 }
 .output-line {
 	margin-top: 2px;
 	margin-bottom: 2px;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
 }
 #input-form {
-	position: relative;
 	margin-top: 2px;
 	margin-bottom: 2px;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
 
-	background-color: green;
+	/* Horizontal flexbox so we can make #input fill all remaining space */
+	display: flex;
+	align-items: center;
 }
 #input {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+	font-size: inherit; /* Don't have smaller font, as is browser default */
 	padding: 0;
-	border: none;
-	font-size: 1em;
-	margin-left: 4px;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 4px; /* Space after #input-glyph (> symbol) */
+	margin-right: 0;
+	flex-grow: 1; /* take all remaining space */
+}
 
+/* ----- Main Page Styling ----- */
+body {
+	background-color: #404040;
+}
+#page-wrapper {
+	border-radius: 5px;
+	background-color: #000000;
+	color: #00FF00;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+#output-lines {
+	list-style-type: none;
+}
+#input {
+	/* Clear all the default input box styling */
+	border: none;
 	color: inherit;
 	background-color: inherit;
 	font: inherit;
-	outline: none;
+	outline: none; /* Don't highlight when focused. */
 }
 
 
-/* ----- Lightbox Styling -----*/
+/* ----- Lightbox Layout ----- */
 #lightbox-dimmer {
 	display: none;
+	z-index: 10;
+
+	/* Fill entire viewport */
 	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: rgba(0,0,0,0.5);
-	z-index: 10;
 }
 #lightbox {
 	display: none;
+	z-index: 11;
+
+	/* Center vertically and horizontally on viewport */
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 11;
+
+	/* Keep 50px buffer from edges of viewport */
 	max-height: calc(100% - 50px);
 	max-width: calc(100% - 50px);
 	overflow: hidden;
-
-	background-color: blue;
 }
 #lightbox-closebutton {
+	/* Position in top-right corner */
 	position: absolute;
 	right: 0%;
 	top: 0%;
 	height: 20px;
 
-	background-color: red;
-	cursor: pointer;
+	/* Center text vertically & horizontally */
+	line-height: 20px;
+	text-align: center;
 }
 #lightbox-content {
 	margin: 20px;
-	max-height: calc(100% - 40px);
-	max-width: calc(100% - 40px);
+	max-height: calc(100% - 40px); /* 20px margin on each side */
+	max-width: calc(100% - 40px); /* 20px margin on each side */
 	overflow: hidden;
-
-	background-color: green;
 }
 
 /* Layout handling for documents - grow to screen, not content size */
@@ -129,10 +162,39 @@
 }
 .document-view #lightbox-content {
 	position: absolute;
-	height: calc(100% - 40px);
-	width: calc(100% - 40px);
+	/* Using height instead of max-height makes it grow to the screen */
+	height: calc(100% - 40px); /* 20px margin on each side */
+	width: calc(100% - 40px); /* 20px margin on each side */
 }
 .document-view iframe {
 	height: 100%;
 	width: 100%;
+}
+
+/* Lightbox Styling */
+#lightbox-dimmer {
+	background-color: rgba(0,0,0,0.5);
+}
+#lightbox {
+	background-color: #BBBBBB;
+	border-radius: 5px;
+}
+#lightbox-closebutton {
+	background-color: #505050;
+	color: #BBBBBB;
+	font-size: 0.5em;
+	font-weight: bold;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	cursor: pointer;
+}
+#lightbox-content {
+	background-color: #000000;
+	color: #00FF00;
+}
+#lightbox-content > div {
+	margin: 10px;
+}
+#lightbox-content > img {
+	margin: 0;
 }

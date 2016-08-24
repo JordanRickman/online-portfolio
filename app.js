@@ -138,6 +138,7 @@ app.commands.cd = function(dir_name) {
 			app.commands.cd(path[i]);
 			app.outputLines([]);
 		}
+		app.outputLines([]);
 	} else {
 		var i = 0;
 		for ( ; i < app.cwd.length; i++ ) {
@@ -189,7 +190,7 @@ app.commands.view = function(item_name) {
 					d3.select("#lightbox")
 						.classed("document-view", false);
 					d3.select("#lightbox-content")
-						.html(item.viewHTML);
+						.html("<div>"+item.viewHTML+"</div>"); // Wrap in div for CSS margin
 					app.showLightbox();
 				} else if ( item.viewURL ) {
 					if ( item.viewType == "doc" ) {
