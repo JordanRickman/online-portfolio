@@ -9,15 +9,22 @@
 </head>
 <body>
 
-<div id="output-wrapper">
-	<ul id="output-lines">
-		<li class="output-line">For a list of commands, type 'help'.</li>
-	</ul>
-</div>
+<div id="page-wrapper">
+	<div id="title-wrapper">
+		<h1 id="title">Jordan Rickman</h1>
+		<h3 id="subtitle">Online Resume/Portfolio</h3>
+	</div>
 
-<form name="inputForm" action="#" onSubmit="app.handleInput();return false">
-<input id="input" type="text"></input>
-</form>
+	<div id="console-wrapper">
+		<ul id="output-lines">
+			<li class="output-line">For a list of commands, type 'help'.</li>
+		</ul>
+
+		<form id="input-form" name="inputForm" action="#" onSubmit="app.handleInput();return false">
+			<span id="input-glyph">&gt;</span><input id="input" type="text"></input>
+		</form>
+	</div>
+</div>
 
 <div id="lightbox-dimmer"></div>
 <div id="lightbox">
