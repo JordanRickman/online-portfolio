@@ -41,12 +41,17 @@ app.outputLines = function(lines) {
 	output_lines.html(function(d) { return d; });
 	// Remove extra lines
 	output_lines.exit().remove();
+	// Update scrollbar
+	var container = document.getElementById("output-lines");
+	Ps.update(container);
 };
 
 //TODO Use d3 transitions to fade in/out
 app.showLightbox = function() {
 	d3.select("#lightbox-dimmer").style("display", "block");
 	d3.select("#lightbox").style("display", "block");
+	var lightboxContent = document.getElementById('lightbox-content');
+	//Ps.update(lightboxContent);
 }
 app.hideLightbox = function() {
 	d3.select("#lightbox-dimmer").style("display", "none");
@@ -297,7 +302,7 @@ app.root = [
 	},
 	{
 		name: "Summary",
-		viewHTML: "Here is some view content. <em>HTML works!</em>"
+		viewHTML: "Here is some view content. <em>HTML works!</em><p>Let's</p><p>make</p><p>this</p><p>much</p><p>taller.</p>"
 	}
 ];
 
@@ -306,15 +311,26 @@ app.cwd_path = [];
 
 //===== Initialize - called on page load =====
 app.init = function() {
-	document.onkeydown = function(evt) {
+	document.addEventListener('keydown', function(evt) {
 		evt = evt || window.event;
 		if (evt.keyCode == 27) { // ESC key
 			app.hideLightbox();
 		}
-	};
+	});
 
 	// Focus the command input
 	document.getElementById('input').focus();
+
+	// Initialize PerfectScrollbar
+	var consoleOutput = document.getElementById('output-lines');
+	Ps.initialize(consoleOutput);
+	var lightboxContent = document.getElementById('lightbox-content');
+	//Ps.initialize(lightboxContent);
+	// Update PerfectScrollbar when viewport changes size
+	window.addEventListener('resize', function(evt) {
+		Ps.update(consoleOutput);
+		//Ps.update(lightboxContent);
+	});
 }
 
 

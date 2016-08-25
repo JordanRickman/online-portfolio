@@ -54,10 +54,9 @@
 	flex-direction: column;
 }
 #output-lines {
+	position: relative; /* perfect-scrollbar needs this on the container */
 	margin: 0;
 	padding: 0;
-	overflow-y: auto; /* Scrollbar only when needed */
-	/* TODO: Custom (JS) scrollbar to fit look/feel */
 }
 .output-line {
 	margin-top: 2px;
@@ -135,7 +134,6 @@ body {
 	/* Keep 50px buffer from edges of viewport */
 	max-height: calc(100% - 50px);
 	max-width: calc(100% - 50px);
-	overflow: hidden;
 }
 #lightbox-closebutton {
 	/* Position in top-right corner */
@@ -149,6 +147,7 @@ body {
 	text-align: center;
 }
 #lightbox-content {
+	/*position: relative; /* perfect-scrollbar needs this on the container */
 	margin: 20px;
 	max-height: calc(100% - 40px); /* 20px margin on each side */
 	max-width: calc(100% - 40px); /* 20px margin on each side */
@@ -171,7 +170,7 @@ body {
 	width: 100%;
 }
 
-/* Lightbox Styling */
+/* ----- Lightbox Styling ----- */
 #lightbox-dimmer {
 	background-color: rgba(0,0,0,0.5);
 }
@@ -197,4 +196,20 @@ body {
 }
 #lightbox-content > img {
 	margin: 0;
+}
+
+/* ----- Perfect-Scrollbar Styling ----- */
+/* Visually indicate that there is more content by making the scrollbar visible even when not hovering */
+.ps-container.ps-active-y > .ps-scrollbar-y-rail {
+	opacity: 0.4;
+}
+.ps-container.ps-active-x > .ps-scrollbar-x-rail {
+	opacity: 0.4;
+}
+/* ... but more opaque when hovering */
+.ps-container.ps-active-y:hover > .ps-scrollbar-y-rail {
+	opacity: 0.9;
+}
+.ps-container.ps-active-x:hover > .ps-scrollbar-x-rail {
+	opacity: 0.9;
 }
