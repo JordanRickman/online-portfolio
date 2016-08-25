@@ -51,7 +51,7 @@ app.showLightbox = function() {
 	d3.select("#lightbox-dimmer").style("display", "block");
 	d3.select("#lightbox").style("display", "block");
 	var lightboxContent = document.getElementById('lightbox-content');
-	//Ps.update(lightboxContent);
+	Ps.update(lightboxContent);
 }
 app.hideLightbox = function() {
 	d3.select("#lightbox-dimmer").style("display", "none");
@@ -325,11 +325,11 @@ app.init = function() {
 	var consoleOutput = document.getElementById('output-lines');
 	Ps.initialize(consoleOutput);
 	var lightboxContent = document.getElementById('lightbox-content');
-	//Ps.initialize(lightboxContent);
+	Ps.initialize(lightboxContent);
 	// Update PerfectScrollbar when viewport changes size
 	window.addEventListener('resize', function(evt) {
 		Ps.update(consoleOutput);
-		//Ps.update(lightboxContent);
+		Ps.update(lightboxContent);
 	});
 }
 
