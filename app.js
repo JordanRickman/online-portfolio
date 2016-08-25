@@ -9,8 +9,7 @@ function escapeHtml(str) {
 };
 
 //===== Core Functions =====
-app.eval = function(input_text) {
-	// TODO General version
+app.eval = function(input_text) {s
 	var text_words = input_text.split(" ");
 	var command = text_words[0];
 	var arguments = text_words.slice(1).join(" ");
