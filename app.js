@@ -513,7 +513,8 @@ app.root = [
 							+"<li>search (AI)</li>"
 							+"<li>genetic machine learning</li></ul>"
 						+"<p>For my undergraduate honors thesis, I developed a novel algorithm using graph-coloring heuristics to solve timetabling problems. "
-						+"I modified a Java desktop application to use the new algorithm. To reduce memory usage, I completely redesigned the application's "
+						+"I modified a Java desktop application to use the new algorithm. I managed all stages of the software development "
+						+"lifecycle using a test-driven methodology. To reduce memory usage, I completely redesigned the application's "
 						+"data structures and added copy-on-write caching. Lastly, I enhanced the algorithm by using genetic machine learning to select heuristics. "
 						+"I presented the work at the 2014 International Conference on the Practice and Theory of Automated Timetabling.</p>"
 			}
