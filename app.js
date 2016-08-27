@@ -84,6 +84,10 @@ app.commands.help.manual = [
 ];
 
 app.commands.ls = function(dir_name) {
+	if ( dir_name[dir_name.length-1] == "/") {
+		// Trailing slashes on directory names are okay
+		dir_name = dir_name.slice(0, dir_name.length-1);
+	}
 	if ( dir_name == "" ) {
 		var item_list = [];
 		for ( var i = 0; i < app.cwd.length; i++ ) {
@@ -129,6 +133,10 @@ app.commands.ls.manual = [
 ]
 
 app.commands.cd = function(dir_name) {
+	if ( dir_name[dir_name.length-1] == "/") {
+		// Trailing slashes on directory names are okay
+		dir_name = dir_name.slice(0, dir_name.length-1);
+	}
 	if ( dir_name == "" ) {
 		app.cwd = app.root;
 		app.cwd_path = [];
