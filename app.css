@@ -247,3 +247,8 @@ p.contact-item > span:last-child {
 .ps-container.ps-active-x:hover > .ps-scrollbar-x-rail {
 	opacity: 0.9;
 }
+/* The scrollbars shows on ViewerJS, but ViewerJS has its own scrollbars, so hide these */
+.document-view .ps-scrollbar-x-rail,
+.document-view .ps-scrollbar-y-rail {
+	display: none !important;
+}
