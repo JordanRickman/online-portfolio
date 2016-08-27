@@ -223,6 +223,14 @@ p.job-header-right {
 	float: right;
 	text-align: right;
 }
+p.contact-item > span:first-child {
+	min-width: 200px;
+	font-weight: bold;
+	display: inline-block;
+}
+p.contact-item > span:last-child {
+	display: inline-block;
+}
 
 /* ----- Perfect-Scrollbar Styling ----- */
 /* Visually indicate that there is more content by making the scrollbar visible even when not hovering */

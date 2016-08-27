@@ -302,9 +302,11 @@ app.root = [
 	},
 	{
 		name: "Contact",
-		viewHTML: "<p><strong>Call/Text</strong> 4 0 7 - 2 0 5 - 9 5 9 7</p>"
-				+"<p><strong>Email</strong> <a href='mailto:jordan.rickman.42@gmail.com'>jordan.rickman.42@gmail.com</a></p>"
-				+"<p><strong>LinkedIn</strong> <a href='http://linkedin.com/in/jordanrickman' target='_blank'>http://linkedin.com/in/jordanrickman</a></p>"
+		viewHTML: "<p class='contact-item'><span>Call/Text</span><span>4 0 7 - 2 0 5 - 9 5 9 7</span></p>"
+				+"<p class='contact-item'><span>Email</span><span><a href='mailto:jordan.rickman.42@gmail.com'>jordan.rickman.42@gmail.com</a></span></p>"
+				+"<p class='contact-item'><span>LinkedIn</span><span><a href='http://linkedin.com/in/jordanrickman' target='_blank'>http://linkedin.com/in/jordanrickman</a></span></p>"
+				+"<p class='contact-item'><span>GitHub</span><span><a href='https://github.com/JordanRickman' target='_blank'>https://github.com/JordanRickman</a></span></p>"
+				+"<p class='contact-item'><span>GitHub (UC Irvine)</span><span><a href='https://github.com/JordanRickmanUCI' target='_blank'>https://github.com/JordanRickmanUCI</a></span></p>"
 	},
 	{
 		name: "Resume.pdf",
