@@ -526,12 +526,36 @@ app.cwd_path = [];
 
 //===== Initialize - called on page load =====
 app.init = function() {
+	// ESC key closes lightbox
 	document.addEventListener('keydown', function(evt) {
 		evt = evt || window.event;
-		if (evt.keyCode == 27) { // ESC key
+		if ( evt.keyCode == 27 ) {
 			app.hideLightbox();
 		}
 	});
+
+	// Tab completion
+	document.getElementById('input').onkeydown = function(evt) {
+		evt = evt || window.event;
+		if ( evt.keyCode == 9 ) {
+			var input_text = d3.select("#input").node().value;
+			var text_words = input_text.split(" ");
+			var command = text_words[0];
+			var name_to_complete = text_words.slice(1).join(" ");
+			if ( command != "" && name_to_complete != "" ) {
+				for ( var i = 0; i < app.cwd.length; i++ ) {
+					var item_name = app.cwd[i].name;
+					if ( item_name.indexOf(name_to_complete) == 0 ) {
+						var completion = command + " " + item_name;
+						d3.select("#input").property("value", completion);
+						break;
+					}
+				}
+			}
+			return false; // Don't tab out of the input box - don't propagate the event.
+		}
+		return true; // Propagate other keydown events
+	};
 
 	// Focus the command input
 	document.getElementById('input').focus();
@@ -546,7 +570,6 @@ app.init = function() {
 		Ps.update(consoleOutput);
 		Ps.update(lightboxContent);
 	});
+
+	// TODO URL Breadcrumbs
 }
-
-
-// TODO URL Breadcrumbs
