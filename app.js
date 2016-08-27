@@ -521,6 +521,13 @@ app.root = [
 						+"I presented the work at the 2014 International Conference on the Practice and Theory of Automated Timetabling.</p>"
 			}
 		]
+	},
+	{
+		name: "Credits",
+		viewHTML: "<p>This website was built using <a href='https://d3js.org/' target='_blank'>D3</a>.</p>"
+				+"<p>It also includes code from <a href='https://github.com/PixelsCommander/Download-File-JS' target='_blank'>Download-File-JS</a>, "
+				+"<a href='https://github.com/noraesae/perfect-scrollbar' target='_blank'>perfect-scrollbar</a>, and "
+				+"<a href='http://viewerjs.org/' target='_blank'>ViewerJS</a>, and utilizes Google Docs's GView API.</p>"
 	}
 ];
 
