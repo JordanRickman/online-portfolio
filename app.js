@@ -1,6 +1,5 @@
 var app = {};
-app.BASE_URL = "http://localhost:8000/" // TODO Modify in production
-
+app.BASE_URL = "http://jordan-rickman.net/"
 //===== Helper Functions =====
 function escapeHtml(str) {
 	var div = document.createElement('div');
@@ -211,10 +210,10 @@ app.commands.view = function(item_name) {
 							.classed("document-view", true);
 						d3.select("#lightbox-content")
 							.html("<iframe src=\"https://docs.google.com/gview?url="
-								//+app.BASE_URL+item.viewURL
-								// TODO Below is a public domain document for demo purposes
-								// we cannot use the real document until we have a publicly accessible URL
-								+"http://ieee802.org/secmail/docIZSEwEqHFr.doc"
+								+app.BASE_URL+item.viewURL
+								// DEBUG Below is a public domain document for demo purposes
+								// we cannot use the real document unless we have a publicly accessible URL
+								//+"http://ieee802.org/secmail/docIZSEwEqHFr.doc"
 								+"&embedded=true\" frameborder=\"0\"></iframe>");
 						app.showLightbox();
 					} else if ( item.viewType == "pdf" ) {
@@ -525,7 +524,7 @@ app.root = [
 	{
 		name: "Credits",
 		viewHTML: "<p>This website was built using <a href='https://d3js.org/' target='_blank'>D3</a>.</p>"
-				+"<p>It also includes code from <a href='https://github.com/PixelsCommander/Download-File-JS' target='_blank'>Download-File-JS</a>, "
+				+"<p>	It also includes code from <a href='https://github.com/PixelsCommander/Download-File-JS' target='_blank'>Download-File-JS</a>, "
 				+"<a href='https://github.com/noraesae/perfect-scrollbar' target='_blank'>perfect-scrollbar</a>, and "
 				+"<a href='http://viewerjs.org/' target='_blank'>ViewerJS</a>, and utilizes Google Docs's GView API.</p>"
 	}
