@@ -293,9 +293,9 @@ app.commands.contact.manual = [
 app.root = [
 	{
 		name: "Summary",
-		viewHTML: "Hello! :)"
+		viewHTML: "<p>Hello, visitor!</p>"
 				+"<p>I'm a software developer with one year of industry experience. "
-				+"I spent the last year taking classes towards a PhD in Informatics at University of California, Irvine.</p>"
+				+"After that, I spent the last year taking classes towards a PhD in Informatics at University of California, Irvine.</p>"
 				+"<p>Now I am returning to industry and am looking for software engineering positions in San Diego, CA. "
 				+"I have strong experience in Java, Python, and full-stack web development including REST API specification and integration.</p>"
 	},
@@ -496,6 +496,7 @@ app.root = [
 							+"<li>third-party API integration</li>"
 							+"<li>Python</li>"
 							+"<li>AngularJS</li></ul>"
+						+"<p><a href='https://jordan-rickman.net/geo-poetry-demo/demo.html' target='_blank'><strong>Live Demo</strong></a></p>"
 						+"<p>For an e-Literature research project at UC Irvine, I developed a JSON REST API in Python using the Flask microframework, "
 						+"and a web frontend using AngularJS. The system connects to the Twitter API in order to fetch tweets around "
 						+"a given GPS location, which are scrambled to form computer-generated 'poetry' and used to select mood music "
@@ -524,7 +525,7 @@ app.root = [
 	{
 		name: "Credits",
 		viewHTML: "<p>This website was built using <a href='https://d3js.org/' target='_blank'>D3</a>.</p>"
-				+"<p>	It also includes code from <a href='https://github.com/PixelsCommander/Download-File-JS' target='_blank'>Download-File-JS</a>, "
+				+"<p>It also includes code from <a href='https://github.com/PixelsCommander/Download-File-JS' target='_blank'>Download-File-JS</a>, "
 				+"<a href='https://github.com/noraesae/perfect-scrollbar' target='_blank'>perfect-scrollbar</a>, and "
 				+"<a href='http://viewerjs.org/' target='_blank'>ViewerJS</a>, and utilizes Google Docs's GView API.</p>"
 	}
