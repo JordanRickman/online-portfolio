@@ -496,7 +496,7 @@ app.root = [
 							+"<li>third-party API integration</li>"
 							+"<li>Python</li>"
 							+"<li>AngularJS</li></ul>"
-						+"<p><a href='https://jordan-rickman.net/geo-poetry-demo/demo.html' target='_blank'><strong>Live Demo</strong></a></p>"
+						+"<p style='font-size: 1.5em; text-align: center;' ><a href='https://jordan-rickman.net/geo-poetry-demo/demo.html' target='_blank'><strong>Live Demo</strong></a></p>"
 						+"<p>For an e-Literature research project at UC Irvine, I developed a JSON REST API in Python using the Flask microframework, "
 						+"and a web frontend using AngularJS. The system connects to the Twitter API in order to fetch tweets around "
 						+"a given GPS location, which are scrambled to form computer-generated 'poetry' and used to select mood music "
